@@ -127,6 +127,15 @@
                 justify-content: center;
                 align-items: center;
                 gap: 5px;
+                p{
+                    font-size: 0.8rem;
+                    @media screen and (max-width: 725px) {
+                        font-size:  0.6rem;
+                        @media screen and (max-width: 565px) {
+                            display: none;
+                        }
+                    }
+                }
                 img{
                     margin: 0;
                 }
