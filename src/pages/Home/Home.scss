@@ -1,0 +1,7 @@
+.container{
+    background-color: var(--bg-color-second);
+    padding: 20px 2% 20px 17%;
+    @media screen and (max-width: 825px) {
+        padding: 20px 2% 20px 2%;
+    }
+}

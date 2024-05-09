@@ -1,0 +1,38 @@
+:root{
+  /*Text*/
+  --text-color-first: #5a5a5a;
+  --text-color-second: #000;
+  --text-color-third: #555;
+  /*Background*/
+  --bg-color-first: #fff;
+  --bg-color-second: #f9f9f9;
+  --bg-color-third: #ccc;
+}
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+a{
+  text-decoration: none;
+  color: var(--text-color-first);
+}
+img,button{
+  cursor: pointer;
+}
+.flex-div{
+  display: flex;
+  align-items: center;
+}
+.large-container{
+  padding-left: 7%;
+}
+@media screen and (max-width: 825px) {
+  .large-container{
+    padding-left: 2% !important;
+  }     
+ }
