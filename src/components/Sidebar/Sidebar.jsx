@@ -22,7 +22,7 @@ const Sidebar = (props) => {
     const { sidebar, category, setCategory } = props
     const [showMore, setShowMore] = useState(false)
     const handleChooseCategory = (categoryId) => {
-        navigate('/')
+        navigate('/Youtube_Clone')
         setCategory(categoryId)
     }
     return (
