@@ -12,8 +12,8 @@ const App = () => {
     <div>
       <Navbar setSidebar={setSidebar} />
       <Routes>
-        <Route path='/' element={<Home sidebar={sidebar} category={category} setCategory={setCategory} />} />
-        <Route path='/video/:channelId/:categoryId/:videoId' element={<Video sidebar={sidebar} category={category} setCategory={setCategory} />} />
+        <Route path='/Youtube_Clone/' element={<Home sidebar={sidebar} category={category} setCategory={setCategory} />} />
+        <Route path='/Youtube_Clone/video/:channelId/:categoryId/:videoId' element={<Video sidebar={sidebar} category={category} setCategory={setCategory} />} />
       </Routes>
       <Footer />
     </div>
