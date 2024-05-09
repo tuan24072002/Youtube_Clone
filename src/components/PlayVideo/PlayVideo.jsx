@@ -12,23 +12,26 @@ import { useParams } from 'react-router-dom'
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 const PlayVideo = (props) => {
-    const { sidebar } = props
+    const { setLoading } = props
     const { videoId, channelId } = useParams();
     const [apiData, setApiData] = useState([])
     const [channelData, setChannelData] = useState(null)
     const [commentData, setCommentData] = useState(null)
     const [showComment, setShowComment] = useState(false)
     const fetchVideoData = useCallback(async () => {
+        setLoading(true)
         const videoDetail_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20contentDetails%2C%20statistics&id=${videoId}&maxResults=100&regionCode=vn&key=${API_KEY}`
-        await axios.get(videoDetail_url).then(res => setApiData(res.data)).catch(err => console.log(err))
+        await axios.get(videoDetail_url).then(res => { setLoading(false); setApiData(res.data); }).catch(err => console.log(err))
     }, [videoId])
     const fetchChannelData = useCallback(async () => {
+        setLoading(true)
         const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${API_KEY}`;
-        await axios.get(channelData_url).then(res => setChannelData(res.data)).catch(err => console.log(err));
+        await axios.get(channelData_url).then(res => { setLoading(false); setChannelData(res.data); }).catch(err => console.log(err));
     }, [channelId])
     const fetchCommentData = useCallback(async () => {
+        setLoading(true)
         const commentData_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2C%20replies&videoId=${videoId}&key=${API_KEY}`
-        await axios.get(commentData_url).then(res => setCommentData(res.data)).catch(err => console.log(err));
+        await axios.get(commentData_url).then(res => { setLoading(false); setCommentData(res.data); }).catch(err => console.log(err));
     }, [videoId])
     useEffect(() => {
         fetchVideoData()
@@ -40,7 +43,7 @@ const PlayVideo = (props) => {
             return (
                 <div className='play-video' key={`play_video_${index}`}>
                     {/* <video src={video} controls autoPlay muted></video> */}
-                    <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+                    <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     <h3 className='title'>{item.snippet?.title}</h3>
                     <div className="play-video-info">
                         <div className="publisher">

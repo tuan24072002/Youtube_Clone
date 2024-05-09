@@ -5,12 +5,12 @@ import ListVideo from '../../components/ListVideo/ListVideo'
 
 
 const Home = (props) => {
-    const { sidebar, category, setCategory } = props
+    const { sidebar, category, setCategory, loading, setLoading } = props
     return (
         <>
             <Sidebar sidebar={sidebar} category={category} setCategory={setCategory} />
             <div className={`container ${!sidebar && 'large-container'}`}>
-                <ListVideo category={category} />
+                <ListVideo category={category} loading={loading} setLoading={setLoading} />
             </div>
         </>
     )

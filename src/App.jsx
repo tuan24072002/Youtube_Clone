@@ -8,12 +8,13 @@ import Footer from './components/Footer/Footer'
 const App = () => {
   const [sidebar, setSidebar] = useState(true)
   const [category, setCategory] = useState(0)
+  const [loading, setLoading] = useState(false)
   return (
     <div>
       <Navbar setSidebar={setSidebar} />
       <Routes>
-        <Route path='/Youtube_Clone/' element={<Home sidebar={sidebar} category={category} setCategory={setCategory} />} />
-        <Route path='/Youtube_Clone/video/:channelId/:categoryId/:videoId' element={<Video sidebar={sidebar} category={category} setCategory={setCategory} />} />
+        <Route path='/Youtube_Clone/' element={<Home sidebar={sidebar} category={category} setCategory={setCategory} loading={loading} setLoading={setLoading} />} />
+        <Route path='/Youtube_Clone/video/:channelId/:categoryId/:videoId' element={<Video sidebar={sidebar} category={category} setCategory={setCategory} loading={loading} setLoading={setLoading} />} />
       </Routes>
       <Footer />
     </div>

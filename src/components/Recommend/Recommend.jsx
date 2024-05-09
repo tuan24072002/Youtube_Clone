@@ -4,16 +4,18 @@ import axios from 'axios'
 import { API_KEY, convert } from '../../utils/data'
 import moment from 'moment'
 import { Link, useParams } from 'react-router-dom'
-
 const Recommend = (props) => {
+    const { setLoading } = props
     const { categoryId } = useParams();
     const [data, setData] = useState(null)
     const fetchRecommendData = useCallback(async () => {
+        setLoading(true)
         const videoList_url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=VN&videoCategoryId=${categoryId}&key=${API_KEY}`
         axios.get(videoList_url)
             .then(data => {
                 if (data && data.data) {
-                    setData(data.data);
+                    setLoading(false)
+                    setData(data.data)
                 }
             })
             .catch(e => console.log(e));

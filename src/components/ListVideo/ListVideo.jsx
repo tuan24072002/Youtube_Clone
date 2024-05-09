@@ -5,11 +5,13 @@ import more from '../../assets/more.svg'
 import { API_KEY, convert } from '../../utils/data'
 import axios from 'axios'
 import moment from 'moment'
+import { FaSpinner } from "react-icons/fa";
 const Feed = (props) => {
-    const { category } = props
+    const { category, loading, setLoading } = props
     const [data, setData] = useState(null)
     const [channelData, setChannelData] = useState([])
     const fetchData = useCallback(async () => {
+        setLoading(true)
         const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20contentDetails%2C%20statistics&chart=mostPopular&maxResults=100&regionCode=vn&videoCategoryId=${category}&key=${API_KEY}`
         axios.get(videoList_url)
             .then(async data => {
@@ -18,7 +20,7 @@ const Feed = (props) => {
                     const videos = data.data.items;
                     for (const video of videos) {
                         const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${video.snippet.channelId}&key=${API_KEY}`;
-                        await axios.get(channelData_url).then(res => setChannelData(prev => [...prev, res.data])).catch(err => console.log(err))
+                        await axios.get(channelData_url).then(res => { setLoading(false); setChannelData(prev => [...prev, res.data]); }).catch(err => console.log(err))
                     }
                 }
             })
@@ -27,6 +29,9 @@ const Feed = (props) => {
     useEffect(() => {
         fetchData();
     }, [fetchData])
+    if (loading) {
+        return <div className="loading_page">Loading... <FaSpinner className='loading' /></div>
+    }
     return (
         <div className="list-video">
             {
