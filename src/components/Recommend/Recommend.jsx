@@ -26,7 +26,7 @@ const Recommend = (props) => {
             {
                 data && data.items && data.items.length > 0 && data.items.map((item, index) => {
                     return (
-                        <Link to={`/video/${item.snippet.channelId}/${item.snippet.categoryId}/${item.id}`} className="side-video-list" key={`recommend_${index}`}>
+                        <Link to={`/Youtube_Clone/video/${item.snippet.channelId}/${item.snippet.categoryId}/${item.id}`} className="side-video-list" key={`recommend_${index}`}>
                             <img src={item?.snippet?.thumbnails?.default?.url} alt="" />
                             <div className="video-info">
                                 <h4>{item.snippet.title}</h4>

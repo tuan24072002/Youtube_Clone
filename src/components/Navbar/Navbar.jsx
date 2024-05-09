@@ -14,7 +14,7 @@ const Navbar = (props) => {
         <nav className='flex-div'>
             <div className="nav-left flex-div">
                 <img className='menu-icon' src={MenuIcon} alt="" onClick={() => setSidebar(prev => !prev)} />
-                <Link to={'/'}><img className='logo' src={logo} alt="" /></Link>
+                <Link to={'/Youtube_Clone'}><img className='logo' src={logo} alt="" /></Link>
             </div>
 
             <div className="nav-middle flex-div">

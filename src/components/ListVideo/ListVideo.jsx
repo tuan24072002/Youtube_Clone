@@ -33,9 +33,9 @@ const Feed = (props) => {
                 data && data.items && data.items.length > 0 && data.items.map((item, index) => {
                     return (
                         <div className='card' key={index}>
-                            <Link to={`/video/${item.snippet.channelId}/${item.snippet.categoryId}/${item.id}`} ><img src={item.snippet.thumbnails.medium.url} alt="" /></Link>
+                            <Link to={`/Youtube_Clone/video/${item.snippet.channelId}/${item.snippet.categoryId}/${item.id}`} ><img src={item.snippet.thumbnails.medium.url} alt="" /></Link>
                             <div className="bottom">
-                                <Link to={`/video/${item.snippet.channelId}/${item.snippet.categoryId}/${item.id}`} className='content'>
+                                <Link to={`/Youtube_Clone/video/${item.snippet.channelId}/${item.snippet.categoryId}/${item.id}`} className='content'>
                                     <div className="creator">
                                         {
                                             channelData && channelData.length > 0 && <img src={channelData[index]?.items[0]?.snippet?.thumbnails?.default?.url} alt="" />
